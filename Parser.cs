@@ -4,6 +4,12 @@ namespace TDD
 {
     public partial class Parser
     {
+        private static readonly Dictionary<char, int> ValueLookup = new Dictionary<char, int>()
+        {
+                { 'T',10 },
+                { 'J',11 },
+        };
+
         public List<Player> Parse(string input)
         {
             // Black: 2H 3D 5S 8C 6D  White: 2C 3H 4S 9C 5H
@@ -11,22 +17,13 @@ namespace TDD
 
             return new List<Player> {
                                         GetPlayer(playerSections, 0),
-                                        GetPlayer(playerSections, 1), 
+                                        GetPlayer(playerSections, 1),
                                     };
         }
 
         private static int GetValue(char c)
         {
-            var valueLookup = new Dictionary<char, int>()
-            {
-                { 'T',10 },
-                { 'J',11 },
-            };
-
-            if (valueLookup.ContainsKey(c))
-                return valueLookup[c];
-
-            return (int)char.GetNumericValue(c);
+            return ValueLookup.ContainsKey(c) ? ValueLookup[c] : (int)char.GetNumericValue(c);
         }
 
         private static string GetOutput(char c)
