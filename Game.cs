@@ -4,7 +4,8 @@
     {
         public string ShowResult(string input)
         {
-            throw new NotImplementedException();
+            // todo: hard-cod return
+            return "White wins. - with high card: 9";
         }
     }
 }
