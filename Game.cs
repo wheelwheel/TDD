@@ -9,10 +9,8 @@
             var parser = new Parser();
             var players = parser.Parse(input);
                 
-            var maxCard1 = GetPokerHands(players[0]).First();
-            var maxCard2 = players[1].Cards
-                                           .OrderByDescending(x => x.Value)
-                                           .First();
+            var maxCard1 = players[0].GetPokerHands().First();
+            var maxCard2 = players[1].GetPokerHands().First();
 
             if (maxCard2.Value > maxCard1.Value)
             {
@@ -26,11 +24,6 @@
                 var winnerOutput = maxCard1.Output;
                 return $"{winnerPlayer} wins. - with high card: {winnerOutput}";
             }
-        }
-
-        private static IEnumerable<Card> GetPokerHands(Player player)
-        {
-            return player.Cards.OrderByDescending(x => x.Value);
         }
     }
 }
