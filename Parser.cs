@@ -10,6 +10,12 @@ namespace TDD
                 { 'J',11 },
         };
 
+        private static readonly Dictionary<char, string> OutputLookup = new Dictionary<char, string>()
+        {
+                { 'T',"10" },
+                { 'J',"Jack" },
+        };
+
         public List<Player> Parse(string input)
         {
             // Black: 2H 3D 5S 8C 6D  White: 2C 3H 4S 9C 5H
@@ -28,11 +34,7 @@ namespace TDD
 
         private static string GetOutput(char c)
         {
-            if (c == 'T')
-                return "10";
-            if (c == 'J')
-                return "Jack";
-            return c.ToString();
+            return OutputLookup.ContainsKey(c) ? OutputLookup[c] : c.ToString();
         }
 
         private static Player GetPlayer(string[] playerSections, int playerIndex)
