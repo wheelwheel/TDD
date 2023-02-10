@@ -19,6 +19,8 @@ namespace TDD
         {
             if (c == 'T')
                 return 10;
+            if (c == 'J')
+                return 11;
 
             return (int)char.GetNumericValue(c);
         }
@@ -27,6 +29,8 @@ namespace TDD
         {
             if (c == 'T')
                 return "10";
+            if (c == 'J')
+                return "Jack";
             return c.ToString();
         }
 
