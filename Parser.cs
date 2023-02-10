@@ -8,12 +8,10 @@ namespace TDD
         {
             // Black: 2H 3D 5S 8C 6D  White: 2C 3H 4S 9C 5H
             var playerSections = input.Split(new[] { "  " }, StringSplitOptions.RemoveEmptyEntries);
-            Player player1 = GetPlayer(playerSections, 0);
-            Player player2 = GetPlayer(playerSections, 1);
 
             return new List<Player> {
-                                        player1,
-                                        player2, 
+                                        GetPlayer(playerSections, 0),
+                                        GetPlayer(playerSections, 1), 
                                     };
         }
 
