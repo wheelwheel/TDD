@@ -17,10 +17,14 @@ namespace TDD
 
         private static int GetValue(char c)
         {
-            if (c == 'T')
-                return 10;
-            if (c == 'J')
-                return 11;
+            var valueLookup = new Dictionary<char, int>()
+            {
+                { 'T',10 },
+                { 'J',11 },
+            };
+
+            if (valueLookup.ContainsKey(c))
+                return valueLookup[c];
 
             return (int)char.GetNumericValue(c);
         }
