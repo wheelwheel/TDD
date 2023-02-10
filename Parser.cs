@@ -1,6 +1,6 @@
 ﻿namespace TDD
 {
-    public class Parser
+    public partial class Parser
     {
         public List<Player> Parse(string input)
         {
@@ -13,11 +13,6 @@
                                         new Player() { Name = player1Name },
                                         new Player() { Name = player2Name },
                                     };
-        }
-
-        public class Player
-        {
-            public string Name { get; set; }
         }
     }
 }
