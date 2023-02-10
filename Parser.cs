@@ -15,6 +15,21 @@ namespace TDD
                                     };
         }
 
+        private static int GetValue(char c)
+        {
+            if (c == 'T')
+                return 10;
+
+            return (int)char.GetNumericValue(c);
+        }
+
+        private static string GetOutput(char c)
+        {
+            if (c == 'T')
+                return "10";
+            return c.ToString();
+        }
+
         private static Player GetPlayer(string[] playerSections, int playerIndex)
         {
             var name = playerSections[playerIndex].Split(":".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)[0];
@@ -23,8 +38,8 @@ namespace TDD
                                           .Select(x => new Card()
                                           {
                                               Suit = x[1].ToString(),
-                                              Value = (int)char.GetNumericValue(x[0]),
-                                              Output = x[0].ToString(),
+                                              Value = GetValue(x[0]),
+                                              Output = GetOutput(x[0]),
                                           })
                                           .ToList();
 
