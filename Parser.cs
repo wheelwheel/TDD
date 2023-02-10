@@ -4,7 +4,10 @@
     {
         public List<Player> Parse(string input)
         {
-            throw new System.NotImplementedException();
+            return new List<Player> {
+                                        new Player() { Name = "Black" },
+                                        new Player() { Name = "White" },
+                                    };
         }
 
         public class Player
