@@ -28,6 +28,14 @@ namespace TDD
                        "White wins. - with high card: Ace");
         }
 
+        [Test]
+        public void both_high_card_tie()
+        {
+            // HighCard vs HighCard when Tie
+            ResultSholdBe("Black: 2H 3D 5S 9C KD  White: 2D 3H 5C KS 9H",
+                        "Tie.");
+        }
+
         private void ResultSholdBe(string input, string expected)
         {
             var showResult = _game.ShowResult(input);
