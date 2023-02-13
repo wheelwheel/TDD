@@ -5,9 +5,14 @@
         public string ShowResult(string input)
         {
             var players = new Parser().Parse(input);
-                
+
             var maxCard1 = players[0].GetPokerHands().First();
             var maxCard2 = players[1].GetPokerHands().First();
+
+            if (maxCard1.Value == maxCard2.Value)
+            {
+                return "Tie.";
+            }
 
             string winnerPlayer;
             string winnerOutput;
