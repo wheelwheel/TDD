@@ -1,4 +1,8 @@
-﻿namespace TDD
+﻿
+
+using Newtonsoft.Json.Linq;
+
+namespace TDD
 {
     public class Game
     {
@@ -9,26 +13,27 @@
             var maxCard1 = players[0].GetPokerHands().First();
             var maxCard2 = players[1].GetPokerHands().First();
 
-            if (maxCard1.Value == maxCard2.Value)
+            var compareResult = maxCard1.Value - maxCard2.Value;
+
+            if (compareResult != 0)
             {
-                return "Tie.";
+                string winnerPlayer = null;
+                string winnerOutput = null;
+                if (compareResult < 0)
+                {
+                    winnerPlayer = players[1].Name;
+                    winnerOutput = maxCard2.Output;
+                }
+                if (compareResult > 0)
+                {
+                    winnerPlayer = players[0].Name;
+                    winnerOutput = maxCard1.Output;
+                }
+
+                return $"{winnerPlayer} wins. - with high card: {winnerOutput}";
             }
 
-            string winnerPlayer;
-            string winnerOutput;
-            if (maxCard2.Value > maxCard1.Value)
-            {
-                winnerPlayer = players[1].Name;
-                winnerOutput = maxCard2.Output;
-            }
-            else
-            {
-                winnerPlayer = players[0].Name;
-                winnerOutput = maxCard1.Output;
-            }
-
-            return $"{winnerPlayer} wins. - with high card: {winnerOutput}";
-
+            return "Tie.";
         }
     }
 }
