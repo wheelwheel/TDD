@@ -12,18 +12,21 @@
             var maxCard1 = players[0].GetPokerHands().First();
             var maxCard2 = players[1].GetPokerHands().First();
 
+            string winnerPlayer = null;
+            string winnerOutput = null;
             if (maxCard2.Value > maxCard1.Value)
             {
-                var winnerPlayer = players[1].Name;
-                var winnerOutput = maxCard2.Output;
-                return $"{winnerPlayer} wins. - with high card: {winnerOutput}";
+                winnerPlayer = players[1].Name;
+                winnerOutput = maxCard2.Output;
             }
             else
             {
-                var winnerPlayer = players[0].Name;
-                var winnerOutput = maxCard1.Output;
-                return $"{winnerPlayer} wins. - with high card: {winnerOutput}";
+                winnerPlayer = players[0].Name;
+                winnerOutput = maxCard1.Output;
             }
+
+            return $"{winnerPlayer} wins. - with high card: {winnerOutput}";
+
         }
     }
 }

@@ -13,7 +13,7 @@ namespace TDD
         }
 
         [Test]
-        public void show_winner_card_output()
+        public void both_high_card()
         {
             // 2~9
             ResultSholdBe("Black: 2H 3D 5S 8C 6D  White: 2C 3H 4S 9C 5H",
@@ -22,6 +22,10 @@ namespace TDD
             // compare Black or White win by max Valuecard
             ResultSholdBe("Black: 2H 3D 5S 8C KD  White: 2C 3H 4S JC 5H",
                        "Black wins. - with high card: King");
+
+            // HighCard vs HighCard
+            ResultSholdBe("Black: 2H 3D 5S 8C KD  White: 2C 3H 4S 8C AH",
+                       "White wins. - with high card: Ace");
         }
 
         private void ResultSholdBe(string input, string expected)
