@@ -36,6 +36,14 @@ namespace TDD
                         "Tie.");
         }
 
+        [Test]
+        public void both_high_card_decided_winner_by_other_cards()
+        {
+            // decided by 2nd cards
+            ResultSholdBe("Black: 2H 3D 5S 9C KD  White: 2C 3H 4S 8C KH",
+                        "Black wins. - with high card: 9");
+        }
+
         private void ResultSholdBe(string input, string expected)
         {
             var showResult = _game.ShowResult(input);
