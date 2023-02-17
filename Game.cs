@@ -24,7 +24,7 @@ namespace TDD
                     winnerPlayer = players[1].Name;
                     winnerOutput = maxCard2.Output;
                 }
-                if (compareResult > 0)
+                else
                 {
                     winnerPlayer = players[0].Name;
                     winnerOutput = maxCard1.Output;
