@@ -14,23 +14,19 @@ namespace TDD
             var pokerHands1 = players[0].GetPokerHands();
             var pokerHands2 = players[1].GetPokerHands();
 
-            int compareResult;
-            string winnerCategory;
-            string winnerOutput;
+            IPokerHandsComparer comparer;
             if (pokerHands1.GetCategory().Type != pokerHands2.GetCategory().Type)
             {
-                IPokerHandsComparer comparer = new DifferentCategoryComparer();
-                compareResult = comparer.Compare(pokerHands1, pokerHands2);
-                winnerOutput = comparer.WinnerOutput;
-                winnerCategory = comparer.WinnerCategory;
+                comparer = new DifferentCategoryComparer();
             }
             else
             {
-                var comparer = new HighCardComparer();
-                compareResult = comparer.Compare(pokerHands1, pokerHands2);
-                winnerOutput = comparer.WinnerOutput;
-                winnerCategory = comparer.WinnerCategory;
+                comparer = new HighCardComparer();
             }
+
+            var compareResult = comparer.Compare(pokerHands1, pokerHands2);
+            var winnerOutput = comparer.WinnerOutput;
+            var winnerCategory = comparer.WinnerCategory;
 
             if (compareResult != 0)
             {
