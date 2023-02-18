@@ -20,7 +20,7 @@ namespace TDD
             if (pokerHands1.GetCategory().Type != pokerHands2.GetCategory().Type)
             {
                 var differentCategoryComparer = new DifferentCategoryComparer();
-                compareResult = differentCategoryComparer.Compare(pokerHands1.GetCategory(), pokerHands2.GetCategory());
+                compareResult = differentCategoryComparer.Compare(pokerHands1, pokerHands2);
                 winnerOutput = differentCategoryComparer.WinnerOutput;
                 winnerCategory = differentCategoryComparer.WinnerCategory;
             }
