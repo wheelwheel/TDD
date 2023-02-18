@@ -1,4 +1,5 @@
-﻿using TDD.Comparers;
+﻿using TDD.Categories;
+using TDD.Comparers;
 
 namespace TDD
 {
@@ -39,23 +40,22 @@ namespace TDD
             var pairs = pokerHands.GroupBy(x => x.Value).Where(x => x.Count() == 2);
             if (pairs.Any())
             {
-                return new Category {Type = CategoryType.Pair, Name = "pair", Output =pairs.First().First().Output};
+                return new Pair {Output =pairs.First().First().Output};
             }
 
-            return new Category { Type = CategoryType.HighCard };
+            return new HighCard();
         }
     }
 
-    internal class Category
+    internal class HighCard : Category
     {
-        public CategoryType Type { get; set; }
-        public string Name { get; set; }
-        public string Output { get; set; }
+        public override CategoryType Type => CategoryType.HighCard;
+        public override string Name => "high card";
     }
 
-    public enum CategoryType
+    internal class Pair : Category
     {
-        HighCard = 0,
-        Pair = 1,
+        public override CategoryType Type => CategoryType.Pair;
+        public override string Name => "pair";
     }
 }
