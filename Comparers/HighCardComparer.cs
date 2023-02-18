@@ -3,7 +3,7 @@
     public class HighCardComparer
     {
         public string WinnerOutput { get; private set; }
-        public string CategoryName => "High card";
+        public string WinnerCategory => "high card";
 
         public int Compare(IEnumerable<Card> pokerHands1, IEnumerable<Card> pokerHands2)
         {
