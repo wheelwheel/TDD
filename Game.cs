@@ -18,7 +18,7 @@ namespace TDD
             {
                 string winnerPlayer;
                 string winnerCategory;
-                string winnerOutput;
+                string winnerOutput; 
 
                 if (category1.Type > category2.Type)
                 {
@@ -44,7 +44,8 @@ namespace TDD
                 {
                     var winnerPlayer = compareResult < 0 ? players[1].Name : players[0].Name;
                     var winnerOutput = highCardComparer.WinnerOutput;
-                    return $"{winnerPlayer} wins. - with high card: {winnerOutput}";
+                    var winnerCategory = highCardComparer.CategoryName;
+                    return $"{winnerPlayer} wins. - with {winnerCategory}: {winnerOutput}";
                 }
             }
 
