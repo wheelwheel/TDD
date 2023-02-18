@@ -5,8 +5,6 @@ namespace TDD
 {
     public class Game
     {
-        private readonly DifferentCategoryComparer _differentCategoryComparer = new DifferentCategoryComparer();
-
         public string ShowResult(string input)
         {
             var players = new Parser().Parse(input);
