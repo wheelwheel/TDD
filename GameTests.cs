@@ -42,6 +42,10 @@ namespace TDD
             // decided by 2nd cards
             ResultSholdBe("Black: 2H 3D 5S 9C KD  White: 2C 3H 4S 8C KH",
                         "Black wins. - with high card: 9");
+
+            // decided by 3nd cards
+            ResultSholdBe("Black: 2H 3D 5S 9C KD  White: 2C 3H 4S 9C KH",
+                        "Black wins. - with high card: 5");
         }
 
         private void ResultSholdBe(string input, string expected)
