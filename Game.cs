@@ -10,10 +10,10 @@ namespace TDD
 
             var pokerHands1 = players[0].GetPokerHands();
             var pokerHands2 = players[1].GetPokerHands();
-            CategoryType categoryTpye1 = GetCategoryType(pokerHands1);
-            CategoryType categoryTpye2 = GetCategoryType(pokerHands2);
+            var category1 = GetCategory(pokerHands1);
+            var category2 = GetCategory(pokerHands2);
 
-            if (categoryTpye1 > categoryTpye2)
+            if (category1.Type > category2.Type)
             {
                 // todo: hard-code return
                 var winnerPlayer = players[0].Name;
@@ -35,16 +35,21 @@ namespace TDD
             return "Tie.";
         }
 
-        private static CategoryType GetCategoryType(IEnumerable<Card> pokerHands)
+        private static Category GetCategory(IEnumerable<Card> pokerHands)
         {
             var pairs = pokerHands.GroupBy(x => x.Value).Where(x => x.Count() == 2);
             if (pairs.Any())
             {
-                return CategoryType.Pair;
+                return new Category {Type = CategoryType.Pair };
             }
 
-            return CategoryType.HighCard;
+            return new Category { Type = CategoryType.HighCard };
         }
+    }
+
+    internal class Category
+    {
+        public CategoryType Type { get; set; }
     }
 
     public enum CategoryType
