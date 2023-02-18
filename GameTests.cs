@@ -38,6 +38,10 @@ namespace TDD
             // pair compare with high card when player1 win
             ResultSholdBe("Black: 3H 4S 4C 2D 5H  White: 2S 8S AS QH 3S",
                         "Black wins. - with pair: 4");
+
+            // different category compare when player2 win
+            ResultSholdBe("Black: 3H 4S 7C 2D 5H  White: QS 8S AS QH 3S",
+                        "White wins. - with pair: Queen");
         }
 
         private void ResultSholdBe(string input, string expected)
