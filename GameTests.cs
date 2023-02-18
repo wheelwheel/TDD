@@ -32,6 +32,14 @@ namespace TDD
                         "Tie.");
         }
 
+        [Test]
+        public void pair_win_others()
+        {
+            // pair compare with high card when player1 win
+            ResultSholdBe("Black: 3H 4S 4C 2D 5H  White: 2S 8S AS QH 3S",
+                        "Black wins. - with pair: 4");
+        }
+
         private void ResultSholdBe(string input, string expected)
         {
             var showResult = _game.ShowResult(input);
