@@ -11,8 +11,9 @@ namespace TDD
             var pokerHands1 = players[0].GetPokerHands();
             var pokerHands2 = players[1].GetPokerHands();
             Category categoryTpye1 = GetCategoryType(pokerHands1);
+            Category categoryTpye2 = GetCategoryType(pokerHands2);
 
-            if (categoryTpye1 == Category.Pair)
+            if (categoryTpye1 > categoryTpye2)
             {
                 // todo: hard-code return
                 var winnerPlayer = "Black";
