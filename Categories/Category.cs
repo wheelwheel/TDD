@@ -1,6 +1,6 @@
 ﻿namespace TDD.Categories
 {
-    internal abstract class Category
+    public abstract class Category
     {
         public abstract CategoryType Type { get; }
         public abstract string Name { get; }
