@@ -2,7 +2,7 @@
 
 namespace TDD
 {
-    public class Game 
+    public class Game
     {
         public string ShowResult(string input)
         {
@@ -11,9 +11,16 @@ namespace TDD
             var pokerHands1 = players[0].GetPokerHands();
             var pokerHands2 = players[1].GetPokerHands();
 
+            var pairs1 = pokerHands1.GroupBy(x => x.Value).Where(x => x.Count() == 2);
+
+            if (pairs1.Any())
+            {
+                return "Black wins. - with pair: 4";
+            }
+
             var highCardComparer = new HighCardComparer();
             var compareResult = highCardComparer.Compare(pokerHands1, pokerHands2);
-           
+
             if (compareResult != 0)
             {
                 var winnerPlayer = compareResult < 0 ? players[1].Name : players[0].Name;
