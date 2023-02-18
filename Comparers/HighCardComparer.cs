@@ -1,11 +1,11 @@
 ﻿namespace TDD.Comparers
 {
-    public class HighCardComparer
+    public class HighCardComparer : IPokerHandsComparer
     {
         public string WinnerOutput { get; private set; }
         public string WinnerCategory => "high card";
 
-        public int Compare(IEnumerable<Card> pokerHands1, IEnumerable<Card> pokerHands2)
+        public int Compare(PokerHands pokerHands1, PokerHands pokerHands2)
         {
             var enumerator1 = pokerHands1.GetEnumerator();
             var enumerator2 = pokerHands2.GetEnumerator();
