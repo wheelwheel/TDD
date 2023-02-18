@@ -13,8 +13,8 @@ namespace TDD
 
             var pokerHands1 = players[0].GetPokerHands();
             var pokerHands2 = players[1].GetPokerHands();
-            var category1 = GetCategory(pokerHands1);
-            var category2 = GetCategory(pokerHands2);
+            var category1 = pokerHands1.GetCategory();
+            var category2 = pokerHands2.GetCategory();
 
             int compareResult;
             string winnerCategory;
@@ -41,17 +41,6 @@ namespace TDD
             }
 
             return "Tie.";
-        }
-
-        private static Category GetCategory(IEnumerable<Card> pokerHands)
-        {
-            var pairs = pokerHands.GroupBy(x => x.Value).Where(x => x.Count() == 2);
-            if (pairs.Any())
-            {
-                return new Pair { Output = pairs.First().First().Output };
-            }
-
-            return new HighCard();
         }
     }
 }

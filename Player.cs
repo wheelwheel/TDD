@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using TDD.Categories;
 
 namespace TDD
 {
@@ -7,7 +8,7 @@ namespace TDD
         public string Name { get; set; }
         public List<Card> Cards { get; set; }
 
-        public IEnumerable<Card> GetPokerHands()
+        public PokerHands GetPokerHands()
         {
             return new PokerHands(Cards.OrderByDescending(x => x.Value));
         }
@@ -30,6 +31,17 @@ namespace TDD
         IEnumerator IEnumerable.GetEnumerator()
         {
            return GetEnumerator();
+        }
+
+        public Category GetCategory()
+        {
+            var pairs = this.GroupBy(x => x.Value).Where(x => x.Count() == 2);
+            if (pairs.Any())
+            {
+                return new Pair { Output = pairs.First().First().Output };
+            }
+
+            return new HighCard();
         }
     }
 }
