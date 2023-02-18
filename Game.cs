@@ -15,10 +15,9 @@ namespace TDD
 
             if (category1.Type > category2.Type)
             {
-                // todo: hard-code return
                 var winnerPlayer = players[0].Name;
-                var winnerCategory = "pair";
-                var winnerOutput = "4";
+                var winnerCategory = category1.Name;
+                var winnerOutput = category1.Output;
                 return $"{winnerPlayer} wins. - with {winnerCategory}: {winnerOutput}";
             }
 
@@ -40,7 +39,7 @@ namespace TDD
             var pairs = pokerHands.GroupBy(x => x.Value).Where(x => x.Count() == 2);
             if (pairs.Any())
             {
-                return new Category {Type = CategoryType.Pair };
+                return new Category {Type = CategoryType.Pair, Name = "pair", Output =pairs.First().First().Output};
             }
 
             return new Category { Type = CategoryType.HighCard };
@@ -50,6 +49,8 @@ namespace TDD
     internal class Category
     {
         public CategoryType Type { get; set; }
+        public string Name { get; set; }
+        public string Output { get; set; }
     }
 
     public enum CategoryType
