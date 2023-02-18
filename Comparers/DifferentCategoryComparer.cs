@@ -1,8 +1,14 @@
-﻿using TDD.Categories;
-
-namespace TDD.Comparers
+﻿namespace TDD.Comparers
 {
-    public class DifferentCategoryComparer
+    public interface IPokerHandsComparer
+    {
+        string WinnerCategory { get; }
+        string WinnerOutput { get; }
+
+        int Compare(PokerHands pokerHands1, PokerHands pokerHands2);
+    }
+
+    public class DifferentCategoryComparer : IPokerHandsComparer
     {
         public string WinnerCategory { get; private set; }
         public string WinnerOutput { get; private set; }
