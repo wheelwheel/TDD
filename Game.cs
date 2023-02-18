@@ -24,11 +24,9 @@ namespace TDD
 
             if (category1.Type < category2.Type)
             {
-                return "White wins. - with pair: Queen";
-
-                var winnerPlayer = players[0].Name;
-                var winnerCategory = category1.Name;
-                var winnerOutput = category1.Output;
+                var winnerPlayer = players[1].Name;
+                var winnerCategory = category2.Name;
+                var winnerOutput = category2.Output;
                 return $"{winnerPlayer} wins. - with {winnerCategory}: {winnerOutput}";
             }
 
