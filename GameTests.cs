@@ -13,6 +13,8 @@ namespace TDD
         }
 
         [Test]
+        [Category("high card")]
+        [Category("same category")]
         public void both_high_card()
         {
             // HighCard vs HighCard
@@ -33,6 +35,8 @@ namespace TDD
         }
 
         [Test]
+        [Category("pair")]
+        [Category("different category")]
         public void pair_win_others()
         {
             // pair compare with high card when player1 win
@@ -42,6 +46,16 @@ namespace TDD
             // different category compare when player2 win
             ResultSholdBe("Black: 3H 4S 7C 2D 5H  White: QS 8S AS QH 3S",
                         "White wins. - with pair: Queen");
+        }
+
+        [Test]
+        [Category("pair")]
+        [Category("same category")]
+        public void both_pair()
+        {
+            // 比較 pair 點數大小
+            ResultSholdBe("Black: 2H 3D TS TC KD  White: 2S 3H 3C 9S AH",
+                        "Black wins. - with pair: 10");
         }
 
         private void ResultSholdBe(string input, string expected)
