@@ -3,29 +3,6 @@ using TDD.Comparers;
 
 namespace TDD
 {
-    public class DifferentCategoryComparer
-    {
-        public string WinnerCategory { get; set; }
-        public string WinnerOutput { get; set;}
-
-        public int Compare(Category category1, Category category2)
-        {
-            var compareResult = category1.Type - category2.Type;
-            if (category1.Type > category2.Type)
-            {
-                WinnerCategory = category1.Name;
-                WinnerOutput = category1.Output;
-            }
-            else
-            {
-                WinnerCategory = category2.Name;
-                WinnerOutput = category2.Output;
-            }
-
-            return compareResult;
-        }
-    }
-
     public class Game
     {
         private readonly DifferentCategoryComparer _differentCategoryComparer = new DifferentCategoryComparer();
@@ -44,9 +21,10 @@ namespace TDD
             string winnerOutput;
             if (category1.Type != category2.Type)
             {
-                compareResult = _differentCategoryComparer.Compare(category1, category2);
-                winnerOutput = _differentCategoryComparer.WinnerOutput;
-                winnerCategory = _differentCategoryComparer.WinnerCategory;
+                var differentCategoryComparer = new DifferentCategoryComparer();
+                compareResult = differentCategoryComparer.Compare(category1, category2);
+                winnerOutput = differentCategoryComparer.WinnerOutput;
+                winnerCategory = differentCategoryComparer.WinnerCategory;
             }
             else
             {
