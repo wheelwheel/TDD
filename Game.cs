@@ -5,7 +5,7 @@ namespace TDD
 {
     public class DifferentCategoryComparer
     {
-        public int DifferentCategoryCompare(Category category1, Category category2, out string winnerCategory, out string winnerOutput)
+        public int Compare(Category category1, Category category2, out string winnerCategory, out string winnerOutput)
         {
             var compareResult = category1.Type - category2.Type;
             if (category1.Type > category2.Type)
@@ -41,7 +41,7 @@ namespace TDD
             string winnerOutput;
             if (category1.Type != category2.Type)
             {
-                compareResult = _differentCategoryComparer.DifferentCategoryCompare(category1, category2, out winnerCategory, out winnerOutput);
+                compareResult = _differentCategoryComparer.Compare(category1, category2, out winnerCategory, out winnerOutput);
             }
             else
             {
