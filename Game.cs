@@ -13,16 +13,8 @@ namespace TDD
 
             var pokerHands1 = players[0].GetPokerHands();
             var pokerHands2 = players[1].GetPokerHands();
-
-            IPokerHandsComparer comparer;
-            if (pokerHands1.GetCategory().Type != pokerHands2.GetCategory().Type)
-            {
-                comparer = new DifferentCategoryComparer();
-            }
-            else
-            {
-                comparer = new HighCardComparer();
-            }
+            
+            var comparer = GetComparer(pokerHands1, pokerHands2);
 
             var compareResult = comparer.Compare(pokerHands1, pokerHands2);
             var winnerOutput = comparer.WinnerOutput;
@@ -35,6 +27,21 @@ namespace TDD
             }
 
             return "Tie.";
+        }
+
+        private static IPokerHandsComparer GetComparer(PokerHands pokerHands1, PokerHands pokerHands2)
+        {
+            IPokerHandsComparer comparer;
+            if (pokerHands1.GetCategory().Type != pokerHands2.GetCategory().Type)
+            {
+                comparer = new DifferentCategoryComparer();
+            }
+            else
+            {
+                comparer = new HighCardComparer();
+            }
+
+            return comparer;
         }
     }
 }
