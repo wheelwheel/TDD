@@ -19,19 +19,7 @@ namespace TDD
             string winnerOutput;
             if (category1.Type != category2.Type)
             {
-                compareResult = category1.Type - category2.Type;
-                if (category1.Type > category2.Type)
-                {
-                    winnerCategory = category1.Name;
-                    winnerOutput = category1.Output;
-                }
-                else
-                {
-                    winnerCategory = category2.Name;
-                    winnerOutput = category2.Output;
-                }
-
-                //return $"{winnerPlayer} wins. - with {winnerCategory}: {winnerOutput}";
+                compareResult = DifferentCategoryCompare(category1, category2, out winnerCategory, out winnerOutput);
             }
             else
             {
@@ -48,6 +36,23 @@ namespace TDD
             }
 
             return "Tie.";
+        }
+        
+        private static int DifferentCategoryCompare(Category category1, Category category2, out string winnerCategory, out string winnerOutput)
+        {
+            var compareResult = category1.Type - category2.Type;
+            if (category1.Type > category2.Type)
+            {
+                winnerCategory = category1.Name;
+                winnerOutput = category1.Output;
+            }
+            else
+            {
+                winnerCategory = category2.Name;
+                winnerOutput = category2.Output;
+            }
+
+            return compareResult;
         }
 
         private static Category GetCategory(IEnumerable<Card> pokerHands)
