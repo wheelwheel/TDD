@@ -54,7 +54,7 @@ namespace TDD
         public void both_pair()
         {
             // 比較 pair 點數大小
-            ResultSholdBe("Black: 2H 3D TS TC KD  White: 2S 3H 3C 9S AH",
+            ResultSholdBe("Black: 2H 3D TS TC KD  White: 2D 3H 3C 9S AH",
                         "Black wins. - with pair: 10");
         }
 
