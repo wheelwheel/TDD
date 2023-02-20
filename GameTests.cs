@@ -70,6 +70,16 @@ namespace TDD
                         "Tie.");
         }
 
+        [Test]
+        [Category("two pair")]
+        [Category("different category")]
+        public void two_pairs_wins_other()
+        {
+            // 不同牌型 比較大小
+            ResultSholdBe("Black: 2H 3D TS TC KD  White: 9D 3H 3C 9S AH",
+                        "White wins. - with two pairs: 9 over 3");
+        }
+
         private void ResultSholdBe(string input, string expected)
         {
             var showResult = _game.ShowResult(input);
