@@ -32,5 +32,10 @@ namespace TDD
 
             return new HighCard();
         }
+
+        public IEnumerable<IGrouping<int, Card>> GetPairs()
+        {
+            return this.GroupBy(x => x.Value).Where(x => x.Count() == 2);
+        }
     }
 }
