@@ -19,25 +19,37 @@ namespace TDD
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-           return GetEnumerator();
+            return GetEnumerator();
         }
 
         public Category GetCategory()
         {
             var pairs = GetPairs();
 
-            if (pairs.Count() == 2)
+            if (IsMatchedTwoPairs(pairs))
             {
-                // todo: hard-code return
-                return new TwoPairs{Output = "9 over 3" };
+                var biggerPair = pairs.First().First().Output;
+                var smallerPair = pairs.Last().First().Output;
+                return new TwoPairs { Output = $"{biggerPair} over {smallerPair}" };
             }
-
-            if (pairs.Any())
+            else
             {
-                return new Pair { Output = pairs.First().First().Output };
+                if (IsMatchedPair(pairs))
+                {
+                    return new Pair { Output = pairs.First().First().Output };
+                }
+                return new HighCard();
             }
+        }
 
-            return new HighCard();
+        private static bool IsMatchedPair(IEnumerable<IGrouping<int, Card>> pairs)
+        {
+            return pairs.Any();
+        }
+
+        private static bool IsMatchedTwoPairs(IEnumerable<IGrouping<int, Card>> pairs)
+        {
+            return pairs.Count() == 2;
         }
 
         public IEnumerable<Card> GetFirstCardOfEachGroup()
@@ -51,12 +63,5 @@ namespace TDD
         {
             return this.GroupBy(x => x.Value).Where(x => x.Count() == 2);
         }
-    }
-
-    public class TwoPairs : Category
-    {
-        public override CategoryType Type => CategoryType.TwoPairs;
-
-        public override string Name => "two pairs";
     }
 }
