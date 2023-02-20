@@ -24,6 +24,11 @@ namespace TDD
 
         public Category GetCategory()
         {
+            return DecidedCategory();
+        }
+
+        private Category DecidedCategory()
+        {
             if (IsMatchedTwoPairs(this))
             {
                 var biggerPair = GetPairs().First().First().Output;
