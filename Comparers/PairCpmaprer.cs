@@ -6,10 +6,7 @@
 
         public override int Compare(PokerHands pokerHands1, PokerHands pokerHands2)
         {
-            var firstCardOfEachGroup1 = pokerHands1.GetFirstCardOfEachGroup();
-            var firstCardOfEachGroup2 = pokerHands2.GetFirstCardOfEachGroup();
-
-            return CompareCardsByValue(firstCardOfEachGroup1, firstCardOfEachGroup2);
+            return CompareCardsByValue(pokerHands1.GetFirstCardOfEachGroup(), pokerHands2.GetFirstCardOfEachGroup());
         }
     }
 }
