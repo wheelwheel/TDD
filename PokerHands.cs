@@ -24,7 +24,8 @@ namespace TDD
 
         public Category GetCategory()
         {
-            var pairs = this.GroupBy(x => x.Value).Where(x => x.Count() == 2);
+            var pairs = GetPairs();
+
             if (pairs.Any())
             {
                 return new Pair { Output = pairs.First().First().Output };
