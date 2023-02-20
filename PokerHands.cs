@@ -24,7 +24,7 @@ namespace TDD
 
         public Category GetCategory()
         {
-            if (IsMatchedTwoPairs(GetPairs()))
+            if (IsMatchedTwoPairs(this))
             {
                 var biggerPair = GetPairs().First().First().Output;
                 var smallerPair = GetPairs().Last().First().Output;
@@ -32,7 +32,7 @@ namespace TDD
             }
             else
             {
-                if (IsMatchedPair(GetPairs()))
+                if (IsMatchedPair(this))
                 {
                     return new Pair { Output = GetPairs().First().First().Output };
                 }
@@ -40,14 +40,14 @@ namespace TDD
             }
         }
 
-        private static bool IsMatchedPair(IEnumerable<IGrouping<int, Card>> pairs)
+        private static bool IsMatchedPair(PokerHands pokerhands)
         {
-            return pairs.Any();
+            return pokerhands.GetPairs().Any();
         }
 
-        private static bool IsMatchedTwoPairs(IEnumerable<IGrouping<int, Card>> pairs)
+        private static bool IsMatchedTwoPairs(PokerHands pokerhands)
         {
-            return pairs.Count() == 2;
+            return pokerhands.GetPairs().Count() == 2;
         }
 
         public IEnumerable<Card> GetFirstCardOfEachGroup()
