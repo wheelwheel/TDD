@@ -34,7 +34,14 @@ namespace TDD
             return new HighCard();
         }
 
-        public IEnumerable<IGrouping<int, Card>> GetPairs()
+        public IEnumerable<Card> GetFirstCardOfEachGroup()
+        {
+            return this.GroupBy(x => x.Value)
+                       .OrderByDescending(x => x.Count())
+                       .Select(x => x.First());
+        }
+
+        private IEnumerable<IGrouping<int, Card>> GetPairs()
         {
             return this.GroupBy(x => x.Value).Where(x => x.Count() == 2);
         }

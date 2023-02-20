@@ -7,7 +7,7 @@
 
         public int Compare(PokerHands pokerHands1, PokerHands pokerHands2)
         {
-            var firstCardOfEachGroup1 = GetFirstCardOfEachGroup(pokerHands1);
+            var firstCardOfEachGroup1 = pokerHands1.GetFirstCardOfEachGroup();
             var firstCardOfEachGroup2 = pokerHands2.GroupBy(x => x.Value)
                                                    .OrderByDescending(x => x.Count())
                                                    .Select(x => x.First());
@@ -17,13 +17,6 @@
             WinnerOutput = highCardComparer.WinnerOutput;
 
             return compareResult;
-        }
-
-        private static IEnumerable<Card> GetFirstCardOfEachGroup(PokerHands pokerHands)
-        {
-            return pokerHands.GroupBy(x => x.Value)
-                             .OrderByDescending(x => x.Count())
-                             .Select(x => x.First());
         }
     }
 }
