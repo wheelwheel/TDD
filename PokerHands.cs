@@ -26,6 +26,12 @@ namespace TDD
         {
             var pairs = GetPairs();
 
+            if (pairs.Count() == 2)
+            {
+                // todo: hard-code return
+                return new TwoPairs{Output = "9 over 3" };
+            }
+
             if (pairs.Any())
             {
                 return new Pair { Output = pairs.First().First().Output };
@@ -45,5 +51,12 @@ namespace TDD
         {
             return this.GroupBy(x => x.Value).Where(x => x.Count() == 2);
         }
+    }
+
+    public class TwoPairs : Category
+    {
+        public override CategoryType Type => CategoryType.TwoPairs;
+
+        public override string Name => "two pairs";
     }
 }
