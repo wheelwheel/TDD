@@ -5,6 +5,13 @@ namespace TDD
 {
     public class Game
     {
+        private static readonly Dictionary<CategoryType, IPokerHandsComparer> SameComparersLookup = 
+            new Dictionary<CategoryType, IPokerHandsComparer>
+            {
+                { CategoryType.Pair,new PairCpmaprer()},
+                { CategoryType.HighCard,new HighCardComparer()},
+            };
+
         public string ShowResult(string input)
         {
             var players = new Parser().Parse(input);
@@ -29,34 +36,15 @@ namespace TDD
 
         private static IPokerHandsComparer GetComparer(PokerHands pokerHands1, PokerHands pokerHands2)
         {
-            if (pokerHands1.GetCategory().Type != pokerHands2.GetCategory().Type)
+
+            var categoryType1 = pokerHands1.GetCategory().Type;
+            var categoryType2 = pokerHands2.GetCategory().Type;
+            if (categoryType1 != categoryType2)
             {
                 return new DifferentCategoryComparer();
             }
 
-            if (pokerHands1.GetCategory().Type == CategoryType.Pair)
-            {
-                return new PairCpmaprer();
-            }
-
-            return new HighCardComparer();
-        }
-    }
-
-    internal class PairCpmaprer : IPokerHandsComparer
-    {
-        public string WinnerOutput { get; private set; }
-        public string WinnerCategory => "pair";
-
-        public int Compare(PokerHands pokerHands1, PokerHands pokerHands2)
-        {
-            var pairs1 = pokerHands1.GroupBy(x => x.Value).Where(x => x.Count() == 2);
-            var pairs2 = pokerHands2.GroupBy(x => x.Value).Where(x => x.Count() == 2);
-
-            var compareResult = pairs1.First().First().Value - pairs2.First().First().Value;
-            WinnerOutput = compareResult > 0 ? pairs1.First().First().Output : pairs2.First().First().Output; 
-            
-            return compareResult;
+            return SameComparersLookup[categoryType1];
         }
     }
 }
