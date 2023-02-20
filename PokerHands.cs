@@ -24,19 +24,17 @@ namespace TDD
 
         public Category GetCategory()
         {
-            var pairs = GetPairs();
-
-            if (IsMatchedTwoPairs(pairs))
+            if (IsMatchedTwoPairs(GetPairs()))
             {
-                var biggerPair = pairs.First().First().Output;
-                var smallerPair = pairs.Last().First().Output;
+                var biggerPair = GetPairs().First().First().Output;
+                var smallerPair = GetPairs().Last().First().Output;
                 return new TwoPairs { Output = $"{biggerPair} over {smallerPair}" };
             }
             else
             {
-                if (IsMatchedPair(pairs))
+                if (IsMatchedPair(GetPairs()))
                 {
-                    return new Pair { Output = pairs.First().First().Output };
+                    return new Pair { Output = GetPairs().First().First().Output };
                 }
                 return new HighCard();
             }
