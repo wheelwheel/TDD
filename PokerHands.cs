@@ -32,12 +32,17 @@ namespace TDD
             }
             else
             {
-                if (IsMatchedPair(this))
-                {
-                    return new Pair { Output = GetPairs().First().First().Output };
-                }
-                return new HighCard();
+                return NextMatch();
             }
+        }
+
+        private Category NextMatch()
+        {
+            if (IsMatchedPair(this))
+            {
+                return new Pair { Output = GetPairs().First().First().Output };
+            }
+            return new HighCard();
         }
 
         private static bool IsMatchedPair(PokerHands pokerhands)
