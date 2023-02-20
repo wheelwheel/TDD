@@ -56,6 +56,10 @@ namespace TDD
             // 比較 pair 點數大小
             ResultSholdBe("Black: 2H 3D TS TC KD  White: 2D 3H 3C 9S AH",
                         "Black wins. - with pair: 10");
+
+            // pair 點數一樣，依序比其他非 pair 的牌的點數
+            ResultSholdBe("Black: 2H 3D TS TC KD  White: 2D TH TC 9S AH",
+                        "White wins. - with pair: Ace");
         }
 
         private void ResultSholdBe(string input, string expected)
