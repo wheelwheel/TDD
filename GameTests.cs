@@ -60,6 +60,14 @@ namespace TDD
             // pair 翴计妓ㄌゑㄤ獶 pair 礟翴计
             ResultSholdBe("Black: 2H 3D TS TC KD  White: 2D TH TC 9S AH",
                         "White wins. - with pair: Ace");
+
+            // pair 翴计妓ㄌゑㄤ獶 pair 礟翴计, last one
+            ResultSholdBe("Black: 9H 3D TS TC KD  White: 2D TH TC 9S KH",
+                        "Black wins. - with pair: 3");
+
+            // tie when both pair
+            ResultSholdBe("Black: 9H 3D TS TC KD  White: 3D TH TC 9S KH",
+                        "Tie.");
         }
 
         private void ResultSholdBe(string input, string expected)
