@@ -7,6 +7,11 @@
 
         public int Compare(PokerHands pokerHands1, PokerHands pokerHands2)
         {
+            return CompareCardsByValue(pokerHands1, pokerHands2);
+        }
+
+        public int CompareCardsByValue(IEnumerable<Card> pokerHands1, IEnumerable<Card> pokerHands2)
+        {
             var enumerator1 = pokerHands1.GetEnumerator();
             var enumerator2 = pokerHands2.GetEnumerator();
 
