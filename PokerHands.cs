@@ -1,48 +1,9 @@
 ﻿using System.Collections;
 using TDD.Categories;
+using TDD.CategoryMatchers;
 
 namespace TDD
 {
-    public class TwoPairsMatcher
-    {
-        public TwoPairsMatcher()
-        {
-        }
-        
-        public Category DecidedCategory(PokerHands pokerHands)
-        {
-            if (IsMatchedTwoPairs(pokerHands))
-            {
-                var biggerPair = pokerHands.GetPairs().First().First().Output;
-                var smallerPair = pokerHands.GetPairs().Last().First().Output;
-                return new TwoPairs { Output = $"{biggerPair} over {smallerPair}" };
-            }
-            else
-            {
-                return NextMatch(pokerHands);
-            }
-        }
-
-        private static bool IsMatchedPair(PokerHands pokerHands)
-        {
-            return pokerHands.GetPairs().Any();
-        }
-
-        private static bool IsMatchedTwoPairs(PokerHands pokerHands)
-        {
-            return pokerHands.GetPairs().Count() == 2;
-        }
-
-        private Category NextMatch(PokerHands pokerHands)   
-        {
-            if (IsMatchedPair(pokerHands))
-            {
-                return new Pair { Output = pokerHands.GetPairs().First().First().Output };
-            }
-            return new HighCard();
-        }
-    }
-
     public class PokerHands : IEnumerable<Card>
     {
         private readonly IEnumerable<Card> _cards;
