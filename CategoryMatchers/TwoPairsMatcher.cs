@@ -2,31 +2,6 @@
 
 namespace TDD.CategoryMatchers
 {
-    public abstract class CategoryMatcher
-    {
-        private readonly PairMatcher _nextCategoryMatcher;
-
-        protected CategoryMatcher(PairMatcher nextCategoryMatcher)
-        {
-            _nextCategoryMatcher = nextCategoryMatcher;
-        }
-
-        public Category DecidedCategory(PokerHands pokerHands)
-        {
-            if (IsMatched(pokerHands))
-            {
-                return GetMatchedCategory(pokerHands);
-            }
-            else
-            {
-                return _nextCategoryMatcher.DecidedCategory(pokerHands);
-            }
-        }
-
-        protected abstract Category GetMatchedCategory(PokerHands pokerHands);
-        protected abstract bool IsMatched(PokerHands pokerHands);
-    }
-
     public class TwoPairsMatcher : CategoryMatcher
     {
         public TwoPairsMatcher(PairMatcher nextCategoryMatcher) : base(nextCategoryMatcher)
