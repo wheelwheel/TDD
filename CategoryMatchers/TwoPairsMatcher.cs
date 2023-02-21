@@ -2,11 +2,11 @@
 
 namespace TDD.CategoryMatchers
 {
-    public class TwoPairsMatcher
+    public abstract class CategoryMatcher
     {
         private readonly PairMatcher _nextCategoryMatcher;
 
-        public TwoPairsMatcher(PairMatcher nextCategoryMatcher)
+        protected CategoryMatcher(PairMatcher nextCategoryMatcher)
         {
             _nextCategoryMatcher = nextCategoryMatcher;
         }
@@ -23,14 +23,24 @@ namespace TDD.CategoryMatchers
             }
         }
 
-        private Category GetMatchedCategory(PokerHands pokerHands)
+        protected abstract Category GetMatchedCategory(PokerHands pokerHands);
+        protected abstract bool IsMatched(PokerHands pokerHands);
+    }
+
+    public class TwoPairsMatcher : CategoryMatcher
+    {
+        public TwoPairsMatcher(PairMatcher nextCategoryMatcher) : base(nextCategoryMatcher)
+        {
+        }
+
+        protected override Category GetMatchedCategory(PokerHands pokerHands)
         {
             var biggerPair = pokerHands.GetPairs().First().First().Output;
             var smallerPair = pokerHands.GetPairs().Last().First().Output;
             return new TwoPairs { Output = $"{biggerPair} over {smallerPair}" };
         }
 
-        private bool IsMatched(PokerHands pokerHands)
+        protected override bool IsMatched(PokerHands pokerHands)
         {
             return pokerHands.GetPairs().Count() == 2;
         }
