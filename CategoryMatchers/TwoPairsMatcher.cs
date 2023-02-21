@@ -12,14 +12,19 @@ namespace TDD.CategoryMatchers
         {
             if (IsMatched(pokerHands))
             {
-                var biggerPair = pokerHands.GetPairs().First().First().Output;
-                var smallerPair = pokerHands.GetPairs().Last().First().Output;
-                return new TwoPairs { Output = $"{biggerPair} over {smallerPair}" };
+                return GetMatchedCategory(pokerHands);
             }
             else
             {
                 return NextMatch(pokerHands);
             }
+        }
+
+        private static Category GetMatchedCategory(PokerHands pokerHands)
+        {
+            var biggerPair = pokerHands.GetPairs().First().First().Output;
+            var smallerPair = pokerHands.GetPairs().Last().First().Output;
+            return new TwoPairs { Output = $"{biggerPair} over {smallerPair}" };
         }
 
         private static bool IsMatched(PokerHands pokerHands)
