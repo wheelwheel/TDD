@@ -13,7 +13,7 @@ namespace TDD.CategoryMatchers
             return pokerHands.GetPairs().Any();
         }
 
-        public Category NextMatch(PokerHands pokerHands)
+        public Category DecidedCategory(PokerHands pokerHands)
         {
             if (IsMatchedPair(pokerHands))
             {
@@ -40,7 +40,7 @@ namespace TDD.CategoryMatchers
             }
             else
             {
-                return _pairMatcher.NextMatch(pokerHands);
+                return _pairMatcher.DecidedCategory(pokerHands);
             }
         }
 
