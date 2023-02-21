@@ -2,34 +2,13 @@
 
 namespace TDD.CategoryMatchers
 {
-    public class PairMatcher
-    {
-        public PairMatcher()
-        {
-        }
-
-        private bool IsMatchedPair(PokerHands pokerHands)
-        {
-            return pokerHands.GetPairs().Any();
-        }
-
-        public Category DecidedCategory(PokerHands pokerHands)
-        {
-            if (IsMatchedPair(pokerHands))
-            {
-                return new Pair { Output = pokerHands.GetPairs().First().First().Output };
-            }
-            return new HighCard();
-        }
-    }
-
     public class TwoPairsMatcher
     {
-        private readonly PairMatcher _pairMatcher;
+        private readonly PairMatcher _nextCategoryMatcher;
 
         public TwoPairsMatcher()
         {
-            _pairMatcher = new PairMatcher();
+            _nextCategoryMatcher = new PairMatcher();
         }
 
         public Category DecidedCategory(PokerHands pokerHands)
@@ -40,7 +19,7 @@ namespace TDD.CategoryMatchers
             }
             else
             {
-                return _pairMatcher.DecidedCategory(pokerHands);
+                return _nextCategoryMatcher.DecidedCategory(pokerHands);
             }
         }
 
