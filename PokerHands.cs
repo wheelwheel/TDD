@@ -5,13 +5,10 @@ namespace TDD
 {
     public class TwoPairsMatcher
     {
-        private readonly PokerHands _pokerHands;
-
-        public TwoPairsMatcher(PokerHands pokerHands)
+        public TwoPairsMatcher()
         {
-            _pokerHands = pokerHands;
         }
-
+        
         public Category DecidedCategory(PokerHands pokerHands)
         {
             if (IsMatchedTwoPairs(pokerHands))
@@ -26,22 +23,21 @@ namespace TDD
             }
         }
 
-        private static bool IsMatchedPair(PokerHands pokerhands)
+        private static bool IsMatchedPair(PokerHands pokerHands)
         {
-            return pokerhands.GetPairs().Any();
+            return pokerHands.GetPairs().Any();
         }
 
-        private static bool IsMatchedTwoPairs(PokerHands pokerhands)
+        private static bool IsMatchedTwoPairs(PokerHands pokerHands)
         {
-            return pokerhands.GetPairs().Count() == 2;
+            return pokerHands.GetPairs().Count() == 2;
         }
 
-
-        private Category NextMatch(PokerHands pokerhands)
+        private Category NextMatch(PokerHands pokerHands)   
         {
-            if (IsMatchedPair(pokerhands))
+            if (IsMatchedPair(pokerHands))
             {
-                return new Pair { Output = _pokerHands.GetPairs().First().First().Output };
+                return new Pair { Output = pokerHands.GetPairs().First().First().Output };
             }
             return new HighCard();
         }
@@ -55,7 +51,7 @@ namespace TDD
         public PokerHands(IEnumerable<Card> cards)
         {
             _cards = cards;
-            _twoPairsMatcher = new TwoPairsMatcher(this);
+            _twoPairsMatcher = new TwoPairsMatcher();
         }
 
         public IEnumerator<Card> GetEnumerator()
