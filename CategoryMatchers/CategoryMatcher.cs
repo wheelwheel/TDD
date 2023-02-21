@@ -17,13 +17,12 @@ namespace TDD.CategoryMatchers
             {
                 return GetMatchedCategory(pokerHands);
             }
-            else
-            {
-                var dicidedCategory = _nextCategoryMatcher != null 
-                    ? _nextCategoryMatcher.DecidedCategory(pokerHands)
-                    : new HighCard();
-                return dicidedCategory;
-            }
+
+            var dicidedCategory = _nextCategoryMatcher != null
+                ? _nextCategoryMatcher.DecidedCategory(pokerHands)
+                : new HighCard();
+            return dicidedCategory;
+
         }
 
         protected abstract Category GetMatchedCategory(PokerHands pokerHands);
