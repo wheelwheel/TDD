@@ -7,12 +7,12 @@ namespace TDD
     public class PokerHands : IEnumerable<Card>
     {
         private readonly IEnumerable<Card> _cards;
-        private readonly TwoPairsMatcher _twoPairsMatcher;
+        private readonly CategoryMatcher _categoryMatcher;
 
         public PokerHands(IEnumerable<Card> cards)
         {
             _cards = cards;
-            _twoPairsMatcher = new TwoPairsMatcher(new PairMatcher(null));
+            _categoryMatcher = new TwoPairsMatcher(new PairMatcher(null));
         }
 
         public IEnumerator<Card> GetEnumerator()
@@ -27,7 +27,7 @@ namespace TDD
 
         public Category GetCategory()
         {
-            return _twoPairsMatcher.DecidedCategory(this);
+            return _categoryMatcher.DecidedCategory(this);
         }
 
         public IEnumerable<Card> GetFirstCardOfEachGroup()
