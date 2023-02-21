@@ -4,9 +4,9 @@ namespace TDD.CategoryMatchers
 {
     public abstract class CategoryMatcher
     {
-        private readonly PairMatcher _nextCategoryMatcher;
+        private readonly CategoryMatcher _nextCategoryMatcher;
 
-        protected CategoryMatcher(PairMatcher nextCategoryMatcher)
+        protected CategoryMatcher(CategoryMatcher nextCategoryMatcher)
         {
             _nextCategoryMatcher = nextCategoryMatcher;
         }
