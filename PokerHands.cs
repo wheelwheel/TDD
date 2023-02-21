@@ -12,17 +12,17 @@ namespace TDD
             _pokerHands = pokerHands;
         }
 
-        public Category DecidedCategory()
+        public Category DecidedCategory(PokerHands pokerHands)
         {
-            if (IsMatchedTwoPairs(_pokerHands))
+            if (IsMatchedTwoPairs(pokerHands))
             {
-                var biggerPair = _pokerHands.GetPairs().First().First().Output;
-                var smallerPair = _pokerHands.GetPairs().Last().First().Output;
+                var biggerPair = pokerHands.GetPairs().First().First().Output;
+                var smallerPair = pokerHands.GetPairs().Last().First().Output;
                 return new TwoPairs { Output = $"{biggerPair} over {smallerPair}" };
             }
             else
             {
-                return NextMatch(_pokerHands);
+                return NextMatch(pokerHands);
             }
         }
 
@@ -70,7 +70,7 @@ namespace TDD
 
         public Category GetCategory()
         {
-            return _twoPairsMatcher.DecidedCategory();
+            return _twoPairsMatcher.DecidedCategory(this);
         }
 
         public IEnumerable<Card> GetFirstCardOfEachGroup()
