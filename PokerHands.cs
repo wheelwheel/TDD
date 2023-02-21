@@ -58,11 +58,6 @@ namespace TDD
             _twoPairsMatcher = new TwoPairsMatcher(this);
         }
 
-        public TwoPairsMatcher TwoPairsMatcher
-        {
-            get { return _twoPairsMatcher; }
-        }
-
         public IEnumerator<Card> GetEnumerator()
         {
             return _cards.GetEnumerator();
@@ -75,7 +70,7 @@ namespace TDD
 
         public Category GetCategory()
         {
-            return TwoPairsMatcher.DecidedCategory();
+            return _twoPairsMatcher.DecidedCategory();
         }
 
         public IEnumerable<Card> GetFirstCardOfEachGroup()
