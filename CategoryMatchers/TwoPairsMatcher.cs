@@ -6,9 +6,9 @@ namespace TDD.CategoryMatchers
     {
         private readonly PairMatcher _nextCategoryMatcher;
 
-        public TwoPairsMatcher()
+        public TwoPairsMatcher(PairMatcher nextCategoryMatcher)
         {
-            _nextCategoryMatcher = new PairMatcher();
+            _nextCategoryMatcher = nextCategoryMatcher;
         }
 
         public Category DecidedCategory(PokerHands pokerHands)

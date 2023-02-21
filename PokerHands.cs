@@ -12,7 +12,7 @@ namespace TDD
         public PokerHands(IEnumerable<Card> cards)
         {
             _cards = cards;
-            _twoPairsMatcher = new TwoPairsMatcher();
+            _twoPairsMatcher = new TwoPairsMatcher(new PairMatcher());
         }
 
         public IEnumerator<Card> GetEnumerator()
