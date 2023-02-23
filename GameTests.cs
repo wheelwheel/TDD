@@ -78,6 +78,10 @@ namespace TDD
             // 不同牌型 比較大小
             ResultSholdBe("Black: 2H 3D TS TC KD  White: 9D 3H 3C 9S AH",
                         "White wins. - with two pairs: 9 over 3");
+
+            // 不同牌型 比較大小 確認特殊 output
+            ResultSholdBe("Black: KH 3D TS TC KD  White: 9D 3H AC 8S AH",
+                        "Black wins. - with two pairs: King over 10");
         }
 
         private void ResultSholdBe(string input, string expected)
