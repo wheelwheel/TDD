@@ -92,6 +92,14 @@ namespace TDD
             // 1st pair decided winner
             ResultSholdBe("Black: KH 4D 4S TC KD  White: 9D 8H 8C 9S AH",
                         "Black wins. - with two pairs: King");
+
+            // 2nd pair decided winner
+            ResultSholdBe("Black: KH 4D 4S TC KD  White: KC 8H 8C 9S KS",
+                        "White wins. - with two pairs: 8");
+
+            // tie
+            ResultSholdBe("Black: KH 4D 4S TC KD  White: KD 4H 4C TS KH",
+                        "Tie.");
         }
 
         private void ResultSholdBe(string input, string expected)
