@@ -15,12 +15,7 @@ namespace TDD.CategoryMatchers
 
         protected override bool IsMatched(PokerHands pokerHands)
         {
-            return IsPair(pokerHands);
-        }
-
-        private static bool IsPair(PokerHands pokerHands)
-        {
-            return pokerHands.GetPairs().Any();
+            return pokerHands.IsPair();
         }
     }
 }

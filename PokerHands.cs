@@ -46,5 +46,10 @@ namespace TDD
         {
             return GetPairs().Count() == 2;
         }
+
+       public bool IsPair()
+        {
+            return GetPairs().Any();
+        }
     }
 }
