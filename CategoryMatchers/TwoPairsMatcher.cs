@@ -17,6 +17,11 @@ namespace TDD.CategoryMatchers
 
         protected override bool IsMatched(PokerHands pokerHands)
         {
+            return IsTwoPairs(pokerHands);
+        }
+
+        private static bool IsTwoPairs(PokerHands pokerHands)
+        {
             return pokerHands.GetPairs().Count() == 2;
         }
     }
