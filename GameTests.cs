@@ -84,6 +84,16 @@ namespace TDD
                         "Black wins. - with two pairs: King over 10");
         }
 
+        [Test]
+        [Category("two pair")]
+        [Category("same category")]
+        public void both_two_pairs()
+        {
+            // 1st pair decided winner
+            ResultSholdBe("Black: KH 4D 4S TC KD  White: 9D 8H 8C 9S AH",
+                        "Black wins. - with two pairs: King");
+        }
+
         private void ResultSholdBe(string input, string expected)
         {
             var showResult = _game.ShowResult(input);
