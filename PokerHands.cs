@@ -12,7 +12,11 @@ namespace TDD
         public PokerHands(IEnumerable<Card> cards)
         {
             _cards = cards;
-            _categoryMatcher = new StraightMatcher(new ThreeOfAKindMatcher(new TwoPairsMatcher(new PairMatcher(null))));
+            _categoryMatcher = new FlushMatcher(
+                new StraightMatcher(
+                new ThreeOfAKindMatcher(
+                    new TwoPairsMatcher(
+                        new PairMatcher(null)))));
         }
 
         public IEnumerator<Card> GetEnumerator()
@@ -61,5 +65,29 @@ namespace TDD
         {
             return GetThreeOfAKind().Any();
         }
+    }
+
+    public class FlushMatcher : CategoryMatcher
+    {
+        public FlushMatcher(CategoryMatcher nextCategoryMatcher) : base(nextCategoryMatcher)
+        {
+        }
+
+        protected override Category GetMatchedCategory(PokerHands pokerHands)
+        {
+            return new Flush() { Output = pokerHands.First().Output};
+        }
+
+        protected override bool IsMatched(PokerHands pokerHands)
+        {
+            return pokerHands.GroupBy(x=>x.Suit).Count() == 1;
+        }
+    }
+
+    public class Flush : Category
+    {
+        public override CategoryType Type => CategoryType.Flush;
+
+        public override string Name => "flush";
     }
 }

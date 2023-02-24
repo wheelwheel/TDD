@@ -7,5 +7,6 @@
         TwoPairs = 2,
         ThreeOfAKind = 3,
         Straight = 4,
+        Flush = 5,
     }
 }
