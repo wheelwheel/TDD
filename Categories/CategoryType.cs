@@ -6,6 +6,6 @@
         Pair = 1,
         TwoPairs = 2,
         ThreeOfAKind = 3,
-        Strairht = 4,
+        Straight = 4,
     }
 }

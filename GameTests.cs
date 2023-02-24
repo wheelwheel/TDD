@@ -131,7 +131,7 @@ namespace TDD
 
         [Test]
         [Category("straight")]
-        [Category("differeny category")]
+        [Category("different category")]
         public void straight_win_others()
         {
             // 2~9
