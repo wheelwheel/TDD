@@ -51,6 +51,11 @@ namespace TDD
             return this.GroupBy(x => x.Value).Where(x => x.Count() == 3);
         }
 
+        public bool IsFiush()
+        {
+            return this.GroupBy(x => x.Suit).Count() == 1;
+        }
+
         public bool IsPair()
         {
             return GetPairs().Any();

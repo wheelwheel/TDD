@@ -15,7 +15,7 @@ namespace TDD.CategoryMatchers
 
         protected override bool IsMatched(PokerHands pokerHands)
         {
-            return pokerHands.GroupBy(x => x.Suit).Count() == 1;
+            return pokerHands.IsFiush();
         }
     }
 }
