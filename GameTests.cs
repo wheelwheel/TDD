@@ -171,6 +171,16 @@ namespace TDD
                         "Tie.");
         }
 
+        [Test]
+        [Category("flush")]
+        [Category("different category")]
+        public void flush_win_others()
+        {
+            // 不同牌型 比較大小
+            ResultSholdBe("Black: 2H 3D AS 5C 4D  White: 9H 3H 8H 7H QH",
+                        "White wins. - with flush: Queen");
+        }
+
         private void ResultSholdBe(string input, string expected)
         {
             var showResult = _game.ShowResult(input);
