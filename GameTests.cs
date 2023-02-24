@@ -129,6 +129,16 @@ namespace TDD
                         "Tie.");
         }
 
+        [Test]
+        [Category("straight")]
+        [Category("differeny category")]
+        public void straight_win_others()
+        {
+            // 2~9
+            ResultSholdBe("Black: 2H 3D 6S 5C 4D  White: 9D 3H 9C 9S AH",
+                        "Black wins. - with straight: 6");
+        }
+
         private void ResultSholdBe(string input, string expected)
         {
             var showResult = _game.ShowResult(input);
