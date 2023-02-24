@@ -15,12 +15,7 @@ namespace TDD.CategoryMatchers
 
         protected override bool IsMatched(PokerHands pokerHands)
         {
-            return IsThreeOfAKind(pokerHands);
-        }
-
-        private static bool IsThreeOfAKind(PokerHands pokerHands)
-        {
-            return pokerHands.GetThreeOfAKind().Any();
+            return pokerHands.IsThreeOfAKind();
         }
     }
 }

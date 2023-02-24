@@ -55,6 +55,11 @@ namespace TDD
         public bool IsTwoPairs()
         {
             return GetPairs().Count() == 2;
-        }        
+        }
+
+        public bool IsThreeOfAKind()
+        {
+            return GetThreeOfAKind().Any();
+        }
     }
 }
