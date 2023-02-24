@@ -102,6 +102,15 @@ namespace TDD
                         "Tie.");
         }
 
+        [Test]
+        [Category("three of a kind")]
+        [Category("different category")]
+        public void three_of_a_kind_win_others()
+        {
+            ResultSholdBe("Black: KH 3D TS TC KD  White: 9D 3H 9C 9S AH",
+                        "White wins. - with three of a kind: 9");
+        }
+
         private void ResultSholdBe(string input, string expected)
         {
             var showResult = _game.ShowResult(input);
