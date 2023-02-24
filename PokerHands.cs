@@ -42,6 +42,11 @@ namespace TDD
             return this.GroupBy(x => x.Value).Where(x => x.Count() == 2);
         }
 
+        public IEnumerable<IGrouping<int, Card>> GetThreeOfAKind()
+        {
+            return this.GroupBy(x => x.Value).Where(x => x.Count() == 3);
+        }
+
         public bool IsPair()
         {
             return GetPairs().Any();
@@ -50,6 +55,6 @@ namespace TDD
         public bool IsTwoPairs()
         {
             return GetPairs().Count() == 2;
-        }
+        }        
     }
 }
