@@ -148,6 +148,17 @@ namespace TDD
                         "Black wins. - with straight: Ace");
         }
 
+        [Test]
+        [Category("straight")]
+        [Category("same category")]
+        public void both_straight()
+        {
+            // both straight
+            // 9TJQK
+            ResultSholdBe("Black: 9H TD KS QC JD  White: 8D 7H 6C 9S TH",
+                        "Black wins. - with straight: King");
+        }
+
         private void ResultSholdBe(string input, string expected)
         {
             var showResult = _game.ShowResult(input);
