@@ -15,8 +15,7 @@ namespace TDD.CategoryMatchers
 
         protected override bool IsMatched(PokerHands pokerHands)
         {
-            var cardTexts = string.Join("", pokerHands.Select(x => x.Text));
-            return new string[] { "AKQJT98765432", "A5432" }.Any(x => x.Contains(cardTexts));
+            return pokerHands.IsStraight();
         }
     }
 }

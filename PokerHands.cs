@@ -56,6 +56,12 @@ namespace TDD
             return this.GroupBy(x => x.Suit).Count() == 1;
         }
 
+       public bool IsStraight()
+        {
+            var cardTexts = string.Join("", this.Select(x => x.Text));
+            return new string[] { "AKQJT98765432", "A5432" }.Any(x => x.Contains(cardTexts));
+        }
+
         public bool IsPair()
         {
             return GetPairs().Any();
