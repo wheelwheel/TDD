@@ -53,6 +53,7 @@ namespace TDD
                                               Suit = x[1].ToString(),
                                               Value = GetValue(x[0]),
                                               Output = GetOutput(x[0]),
+                                              Text = x[0].ToString(),
                                           })
                                           .ToList();
 

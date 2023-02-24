@@ -24,11 +24,11 @@ namespace TDD
                                                                     Name = "Black",
                                                                     Cards = new List<Card>
                                                                     {
-                                                                        new Card(){Suit = "H",Value = 2,Output="2"},
-                                                                        new Card(){Suit = "D",Value = 3,Output="3"},
-                                                                        new Card(){Suit = "S",Value = 5,Output="5"},
-                                                                        new Card(){Suit = "C",Value = 8,Output="8"},
-                                                                        new Card(){Suit = "D",Value = 6,Output="6"}
+                                                                        new Card(){Suit = "H",Value = 2,Output="2",Text = "2"},
+                                                                        new Card(){Suit = "D",Value = 3,Output="3",Text = "3"},
+                                                                        new Card(){Suit = "S",Value = 5,Output="5",Text = "5"},
+                                                                        new Card(){Suit = "C",Value = 8,Output="8",Text = "8"},
+                                                                        new Card(){Suit = "D",Value = 6,Output="6",Text = "6"}
                                                                     }
 
                                                                 },
@@ -36,11 +36,11 @@ namespace TDD
                                                                     Name = "White",
                                                                     Cards = new List<Card>
                                                                     {
-                                                                        new Card(){Suit = "C",Value = 14,Output="Ace"},
-                                                                        new Card(){Suit = "H",Value = 13,Output="King"},
-                                                                        new Card(){Suit = "S",Value = 12,Output="Queen"},
-                                                                        new Card(){Suit = "C",Value = 11,Output="Jack"},
-                                                                        new Card(){Suit = "H",Value = 10,Output="10"}
+                                                                        new Card(){Suit = "C",Value = 14,Output="Ace",Text="A"},
+                                                                        new Card(){Suit = "H",Value = 13,Output="King",Text="K"},
+                                                                        new Card(){Suit = "S",Value = 12,Output="Queen",Text="Q"},
+                                                                        new Card(){Suit = "C",Value = 11,Output="Jack",Text="J"},
+                                                                        new Card(){Suit = "H",Value = 10,Output="10",Text="T"}
                                                                     }},
                                                                }, options => options.WithStrictOrdering());
         }

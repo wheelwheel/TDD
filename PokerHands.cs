@@ -12,7 +12,7 @@ namespace TDD
         public PokerHands(IEnumerable<Card> cards)
         {
             _cards = cards;
-            _categoryMatcher = new ThreeOfAKindMatcher(new TwoPairsMatcher(new PairMatcher(null)));
+            _categoryMatcher = new StraightMatcher(new ThreeOfAKindMatcher(new TwoPairsMatcher(new PairMatcher(null))));
         }
 
         public IEnumerator<Card> GetEnumerator()
@@ -60,6 +60,23 @@ namespace TDD
         public bool IsThreeOfAKind()
         {
             return GetThreeOfAKind().Any();
+        }
+    }
+
+    internal class StraightMatcher : CategoryMatcher
+    {
+        public StraightMatcher(CategoryMatcher nextCategoryMatcher) : base(nextCategoryMatcher)
+        {
+        }
+
+        protected override Category GetMatchedCategory(PokerHands pokerHands)
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override bool IsMatched(PokerHands pokerHands)
+        {
+            throw new NotImplementedException();
         }
     }
 }
