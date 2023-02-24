@@ -62,33 +62,4 @@ namespace TDD
             return GetThreeOfAKind().Any();
         }
     }
-
-    internal class StraightMatcher : CategoryMatcher
-    {
-        public StraightMatcher(CategoryMatcher nextCategoryMatcher) : base(nextCategoryMatcher)
-        {
-        }
-
-        protected override Category GetMatchedCategory(PokerHands pokerHands)
-        {
-            return new Straight() { Output = pokerHands.First().Output};
-        }
-
-        protected override bool IsMatched(PokerHands pokerHands)
-        {
-            var straightPatten = "AKQJT98765432";
-
-
-            var cardTexts = string.Join("", pokerHands.Select(x => x.Text));
-
-            return straightPatten.Contains(cardTexts);
-        }
-    }
-
-    public class Straight : Category
-    {
-        public override CategoryType Type => CategoryType.Strairht;
-
-        public override string Name => "straight";
-    }
 }
