@@ -119,6 +119,14 @@ namespace TDD
             // win by three of a kind
             ResultSholdBe("Black: KH 4D 4S TC 4D  White: 9D 8H 8C 8S AH",
                         "White wins. - with three of a kind: 8");
+
+            // win by other card
+            ResultSholdBe("Black: KH 4D 4S TC 4D  White: 9D 4H 4C 4S TH",
+                        "Black wins. - with three of a kind: King");
+
+            // tie
+            ResultSholdBe("Black: KH 4D 4S TC 4D  White: KD 4H 4C 4S TH",
+                        "Tie.");
         }
 
         private void ResultSholdBe(string input, string expected)
