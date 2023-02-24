@@ -71,12 +71,24 @@ namespace TDD
 
         protected override Category GetMatchedCategory(PokerHands pokerHands)
         {
-            throw new NotImplementedException();
+            return new Straight() { Output = pokerHands.First().Output};
         }
 
         protected override bool IsMatched(PokerHands pokerHands)
         {
-            throw new NotImplementedException();
+            var straightPatten = "AKQJT98765432";
+
+
+            var cardTexts = string.Join("", pokerHands.Select(x => x.Text));
+
+            return straightPatten.Contains(cardTexts);
         }
+    }
+
+    public class Straight : Category
+    {
+        public override CategoryType Type => CategoryType.Strairht;
+
+        public override string Name => "straight";
     }
 }
