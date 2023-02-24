@@ -157,6 +157,18 @@ namespace TDD
             // 9TJQK
             ResultSholdBe("Black: 9H TD KS QC JD  White: 8D 7H 6C 9S TH",
                         "Black wins. - with straight: King");
+
+            // A2345
+            ResultSholdBe("Black: AH 2D 3S 5C 4D  White: 9H TD KS QC JD",
+                        "Black wins. - with straight: Ace");
+
+            // TJQKA vs A2345
+            ResultSholdBe("Black: AH TD KS QC JD  White: AH 2D 3S 5C 4D",
+                        "Black wins. - with straight: King");
+
+            // tie
+            ResultSholdBe("Black: AH TD KS QC JD  White: AH KD TS QC JD",
+                        "Tie.");
         }
 
         private void ResultSholdBe(string input, string expected)
