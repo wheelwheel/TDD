@@ -111,6 +111,16 @@ namespace TDD
                         "White wins. - with three of a kind: 9");
         }
 
+        [Test]
+        [Category("three of a kind")]
+        [Category("same category")]
+        public void both_three_of_a_kind()
+        {
+            // win by three of a kind
+            ResultSholdBe("Black: KH 4D 4S TC 4D  White: 9D 8H 8C 8S AH",
+                        "White wins. - with three of a kind: 8");
+        }
+
         private void ResultSholdBe(string input, string expected)
         {
             var showResult = _game.ShowResult(input);
