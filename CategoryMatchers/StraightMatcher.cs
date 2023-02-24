@@ -16,10 +16,11 @@ namespace TDD.CategoryMatchers
         protected override bool IsMatched(PokerHands pokerHands)
         {
             var straightPatten = "AKQJT98765432";
+            var anotherStraightPatten = "A5432";
 
             var cardTexts = string.Join("", pokerHands.Select(x => x.Text));
 
-            return straightPatten.Contains(cardTexts);
+            return straightPatten.Contains(cardTexts) || anotherStraightPatten.Contains(cardTexts);
         }
     }
 }
