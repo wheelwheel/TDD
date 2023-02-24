@@ -12,7 +12,7 @@ namespace TDD
         public PokerHands(IEnumerable<Card> cards)
         {
             _cards = cards;
-            _categoryMatcher = new TwoPairsMatcher(new PairMatcher(null));
+            _categoryMatcher = new ThreeOfAKindMatcher(new TwoPairsMatcher(new PairMatcher(null)));
         }
 
         public IEnumerator<Card> GetEnumerator()
@@ -51,5 +51,36 @@ namespace TDD
         {
             return GetPairs().Any();
         }
+    }
+
+    public class ThreeOfAKindMatcher : CategoryMatcher
+    {
+        public ThreeOfAKindMatcher(CategoryMatcher nextCategoryMatcher) : base(nextCategoryMatcher)
+        {
+        }
+
+        protected override Category GetMatchedCategory(PokerHands pokerHands)
+        {
+            return new ThreeOfAKind() { Output = GetThreeOfAKind(pokerHands).First().First().Output};
+        }
+
+        protected override bool IsMatched(PokerHands pokerHands)
+        {
+            IEnumerable<IGrouping<int, Card>> threeOfAKind = GetThreeOfAKind(pokerHands);
+
+            return threeOfAKind.Any();
+        }
+
+        private static IEnumerable<IGrouping<int, Card>> GetThreeOfAKind(PokerHands pokerHands)
+        {
+            return pokerHands.GroupBy(x => x.Value).Where(x => x.Count() == 3);
+        }
+    }
+
+    public class ThreeOfAKind : Category
+    {
+        public override CategoryType Type => CategoryType.ThreeOfAKind;
+
+        public override string Name => "three of a kind";
     }
 }
