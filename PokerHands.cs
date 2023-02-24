@@ -66,28 +66,4 @@ namespace TDD
             return GetThreeOfAKind().Any();
         }
     }
-
-    public class FlushMatcher : CategoryMatcher
-    {
-        public FlushMatcher(CategoryMatcher nextCategoryMatcher) : base(nextCategoryMatcher)
-        {
-        }
-
-        protected override Category GetMatchedCategory(PokerHands pokerHands)
-        {
-            return new Flush() { Output = pokerHands.First().Output};
-        }
-
-        protected override bool IsMatched(PokerHands pokerHands)
-        {
-            return pokerHands.GroupBy(x=>x.Suit).Count() == 1;
-        }
-    }
-
-    public class Flush : Category
-    {
-        public override CategoryType Type => CategoryType.Flush;
-
-        public override string Name => "flush";
-    }
 }
