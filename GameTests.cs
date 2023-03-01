@@ -199,6 +199,15 @@ namespace TDD
                         "Tie.");
         }
 
+        [Test]
+        [Category("full house")]
+        [Category("different category")]
+        public void full_house_win_others()
+        {
+            ResultSholdBe("Black: 3H 3C TS TC 3D  White: 9H 3H 8H 7H QH",
+                        "Black wins. - with full house: 3 over 10");
+        }
+
         private void ResultSholdBe(string input, string expected)
         {
             var showResult = _game.ShowResult(input);
