@@ -216,6 +216,14 @@ namespace TDD
             // three of kind win
             ResultSholdBe("Black: 3H 3C TS TC 3D  White: 2C 5C 5H 5S 2H",
                         "White wins. - with full house: 5");
+
+            // pair win
+            ResultSholdBe("Black: 3H 3C TS TC 3D  White: 7C 3C 3H 3S 7H",
+                        "Black wins. - with full house: 10");
+
+            // tie
+            ResultSholdBe("Black: 3H 3C TS TC 3D  White: TC 3C 3H 3S TH",
+                        "Tie.");
         }
 
         private void ResultSholdBe(string input, string expected)
