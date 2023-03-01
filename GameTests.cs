@@ -189,6 +189,14 @@ namespace TDD
             // max card
             ResultSholdBe("Black: 2D 3D TD KD 4D  White: 9H 3H 8H 7H QH",
                         "Black wins. - with flush: King");
+
+            // 2nd card
+            ResultSholdBe("Black: 2D 3D TD KD 4D  White: 9H 3H 8H KH QH",
+                        "White wins. - with flush: Queen");
+
+            // tie
+            ResultSholdBe("Black: 2D 3D TD KD 4D  White: 2H 3H 4H KH TH",
+                        "Tie.");
         }
 
         private void ResultSholdBe(string input, string expected)

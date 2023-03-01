@@ -51,14 +51,4 @@ namespace TDD
             return SameComparersLookup[categoryType1];
         }
     }
-
-    internal class FlushComparer : SameCategoryComparer
-    {
-        public override string WinnerCategory => "flush";
-
-        public override int Compare(PokerHands pokerHands1, PokerHands pokerHands2)
-        {
-            return CompareCardsByValue(pokerHands1, pokerHands2);
-        }
-    }
 }
