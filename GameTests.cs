@@ -243,6 +243,14 @@ namespace TDD
             // four of a kind win
             ResultSholdBe("Black: TH 3C TS TC TD  White: 8D 8S 8H 7H 8C",
                         "Black wins. - with four of a kind: 10");
+
+            // other win
+            ResultSholdBe("Black: 8H 3C 8S 8C 8D  White: 8D 8S 8H 7H 8C",
+                        "White wins. - with four of a kind: 7");
+
+            // tie
+            ResultSholdBe("Black: 8H 7C 8S 8C 8D  White: 8D 8S 8H 7H 8C",
+                        "Tie.");
         }
 
         private void ResultSholdBe(string input, string expected)
