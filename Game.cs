@@ -26,9 +26,7 @@ namespace TDD
             var pokerHands1 = players[0].GetPokerHands();
             var pokerHands2 = players[1].GetPokerHands();
 
-            var comparer = GetComparer(pokerHands1, pokerHands2);
-
-            var compareResult = comparer.Compare(pokerHands1, pokerHands2);
+            var compareResult = Compare(pokerHands1, pokerHands2, out var comparer);
 
             if (compareResult != 0)
             {
@@ -39,6 +37,14 @@ namespace TDD
             }
 
             return "Tie.";
+        }
+
+        private int Compare(PokerHands pokerHands1, PokerHands pokerHands2, out IPokerHandsComparer comparer)
+        {
+            comparer = GetComparer(pokerHands1, pokerHands2);
+            var compareResult = comparer.Compare(pokerHands1, pokerHands2);
+
+            return compareResult;
         }
 
         private static IPokerHandsComparer GetComparer(PokerHands pokerHands1, PokerHands pokerHands2)
