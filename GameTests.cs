@@ -253,6 +253,15 @@ namespace TDD
                         "Tie.");
         }
 
+        [Test]
+        [Category("straight flush")]
+        [Category("different category")]
+        public void straight_flush_win_others()
+        {
+            ResultSholdBe("Black: 6H 4H 5H 2H 3H  White: 8D 8S 8H 7H 8C",
+                        "Black wins. - with straight flush: 6");
+        }
+
         private void ResultSholdBe(string input, string expected)
         {
             var showResult = _game.ShowResult(input);
