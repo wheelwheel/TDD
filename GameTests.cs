@@ -181,6 +181,16 @@ namespace TDD
                         "White wins. - with flush: Queen");
         }
 
+        [Test]
+        [Category("flush")]
+        [Category("same category")]
+        public void both_flush()
+        {
+            // max card
+            ResultSholdBe("Black: 2D 3D TD KD 4D  White: 9H 3H 8H 7H QH",
+                        "Black wins. - with flush: King");
+        }
+
         private void ResultSholdBe(string input, string expected)
         {
             var showResult = _game.ShowResult(input);
