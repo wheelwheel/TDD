@@ -95,28 +95,4 @@ namespace TDD
             return GetFourOfAKind().Any();
         }
     }
-
-    internal class StraightFlushMatcher : CategoryMatcher
-    {
-        public StraightFlushMatcher(CategoryMatcher nextCategoryMatcher) : base(nextCategoryMatcher)
-        {
-        }
-
-        protected override Category GetMatchedCategory(PokerHands pokerHands)
-        {
-            return new StraightFlush() { Output = pokerHands.First().Output};
-        }
-
-        protected override bool IsMatched(PokerHands pokerHands)
-        {
-            return pokerHands.IsStraight() && pokerHands.IsFiush();
-        }
-    }
-
-    internal class StraightFlush : Category
-    {
-        public override CategoryType Type => CategoryType.StraightFlush;
-
-        public override string Name => "straight flush";
-    }
 }
