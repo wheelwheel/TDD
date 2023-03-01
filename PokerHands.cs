@@ -13,12 +13,12 @@ namespace TDD
         {
             _cards = cards;
             _categoryMatcher = new FourOfAKindMatcher(
-                new FullHouseMatcher(
+               new FullHouseMatcher(
                 new FlushMatcher(
-                new StraightMatcher(
-                new ThreeOfAKindMatcher(
-                    new TwoPairsMatcher(
-                        new PairMatcher(null)))))));
+                 new StraightMatcher(
+                  new ThreeOfAKindMatcher(
+                   new TwoPairsMatcher(
+                    new PairMatcher(null)))))));
         }
 
         public IEnumerator<Card> GetEnumerator()
@@ -52,6 +52,12 @@ namespace TDD
         {
             return this.GroupBy(x => x.Value).Where(x => x.Count() == 3);
         }
+
+        public IEnumerable<IGrouping<int, Card>> GetFourOfAKind()
+        {
+            return this.GroupBy(x => x.Value).Where(x => x.Count() == 4);
+        }
+
         public bool IsFullHouse()
         {
             return this.IsThreeOfAKind() && this.IsPair();
@@ -62,7 +68,7 @@ namespace TDD
             return this.GroupBy(x => x.Suit).Count() == 1;
         }
 
-       public bool IsStraight()
+        public bool IsStraight()
         {
             var cardTexts = string.Join("", this.Select(x => x.Text));
             return new string[] { "AKQJT98765432", "A5432" }.Any(x => x.Contains(cardTexts));
