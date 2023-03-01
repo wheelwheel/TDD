@@ -226,6 +226,15 @@ namespace TDD
                         "Tie.");
         }
 
+        [Test]
+        [Category("four of a hind")]
+        [Category("different category")]
+        public void four_of_a_kind_win_others()
+        {
+            ResultSholdBe("Black: 3H 3C TS TC 3D  White: 8D 8S 8H 7H 8C",
+                        "White wins. - with four of a kind: 8");
+        }
+
         private void ResultSholdBe(string input, string expected)
         {
             var showResult = _game.ShowResult(input);
