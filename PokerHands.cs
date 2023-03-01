@@ -12,13 +12,14 @@ namespace TDD
         public PokerHands(IEnumerable<Card> cards)
         {
             _cards = cards;
-            _categoryMatcher = new FourOfAKindMatcher(
-               new FullHouseMatcher(
-                new FlushMatcher(
-                 new StraightMatcher(
-                  new ThreeOfAKindMatcher(
-                   new TwoPairsMatcher(
-                    new PairMatcher(null)))))));
+            _categoryMatcher = new StraightFlushMatcher(
+                new FourOfAKindMatcher(
+                 new FullHouseMatcher(
+                  new FlushMatcher(
+                   new StraightMatcher(
+                    new ThreeOfAKindMatcher(
+                     new TwoPairsMatcher(
+                      new PairMatcher(null))))))));
         }
 
         public IEnumerator<Card> GetEnumerator()
@@ -93,5 +94,29 @@ namespace TDD
         {
             return GetFourOfAKind().Any();
         }
+    }
+
+    internal class StraightFlushMatcher : CategoryMatcher
+    {
+        public StraightFlushMatcher(CategoryMatcher nextCategoryMatcher) : base(nextCategoryMatcher)
+        {
+        }
+
+        protected override Category GetMatchedCategory(PokerHands pokerHands)
+        {
+            return new StraightFlush() { Output = pokerHands.First().Output};
+        }
+
+        protected override bool IsMatched(PokerHands pokerHands)
+        {
+            return pokerHands.IsStraight() && pokerHands.IsFiush();
+        }
+    }
+
+    internal class StraightFlush : Category
+    {
+        public override CategoryType Type => CategoryType.StraightFlush;
+
+        public override string Name => "straight flush";
     }
 }
