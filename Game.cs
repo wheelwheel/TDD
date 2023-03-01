@@ -8,6 +8,7 @@ namespace TDD
         private static readonly Dictionary<CategoryType, IPokerHandsComparer> SameComparersLookup = 
             new Dictionary<CategoryType, IPokerHandsComparer>
             {
+                { CategoryType.StraightFlush,new StraightFlushComparer()},
                 { CategoryType.FourOfAKind,new FourOfAKindComparer()},
                 { CategoryType.FullHouse,new FullHouseComparer()},
                 { CategoryType.Flush,new FlushComparer()},
