@@ -3,9 +3,9 @@ using TDD.Comparers;
 
 namespace TDD
 {
-    public class Game
+    public class PokerHandsComparer
     {
-        private static readonly Dictionary<CategoryType, IPokerHandsComparer> SameComparersLookup = 
+        private static readonly Dictionary<CategoryType, IPokerHandsComparer> SameComparersLookup =
             new Dictionary<CategoryType, IPokerHandsComparer>
             {
                 { CategoryType.StraightFlush,new StraightFlushComparer()},
@@ -19,6 +19,29 @@ namespace TDD
                 { CategoryType.HighCard,new HighCardComparer()},
             };
 
+        private static IPokerHandsComparer GetComparer(PokerHands pokerHands1, PokerHands pokerHands2)
+        {
+            var categoryType1 = pokerHands1.GetCategory().Type;
+            var categoryType2 = pokerHands2.GetCategory().Type;
+            if (categoryType1 != categoryType2)
+                return new DifferentCategoryComparer();
+
+            return SameComparersLookup[categoryType1];
+        }
+
+        public int Compare(PokerHands pokerHands1, PokerHands pokerHands2, out IPokerHandsComparer comparer)
+        {
+            comparer = GetComparer(pokerHands1, pokerHands2);
+            var compareResult = comparer.Compare(pokerHands1, pokerHands2);
+
+            return compareResult;
+        }
+    }
+
+    public class Game
+    {
+        private readonly PokerHandsComparer _pokerHandsComparer = new PokerHandsComparer();
+
         public string ShowResult(string input)
         {
             var players = new Parser().Parse(input);
@@ -26,7 +49,7 @@ namespace TDD
             var pokerHands1 = players[0].GetPokerHands();
             var pokerHands2 = players[1].GetPokerHands();
 
-            var compareResult = Compare(pokerHands1, pokerHands2, out var comparer);
+            var compareResult = _pokerHandsComparer.Compare(pokerHands1, pokerHands2, out var comparer);
 
             if (compareResult != 0)
             {
@@ -37,27 +60,6 @@ namespace TDD
             }
 
             return "Tie.";
-        }
-
-        private int Compare(PokerHands pokerHands1, PokerHands pokerHands2, out IPokerHandsComparer comparer)
-        {
-            comparer = GetComparer(pokerHands1, pokerHands2);
-            var compareResult = comparer.Compare(pokerHands1, pokerHands2);
-
-            return compareResult;
-        }
-
-        private static IPokerHandsComparer GetComparer(PokerHands pokerHands1, PokerHands pokerHands2)
-        {
-
-            var categoryType1 = pokerHands1.GetCategory().Type;
-            var categoryType2 = pokerHands2.GetCategory().Type;
-            if (categoryType1 != categoryType2)
-            {
-                return new DifferentCategoryComparer();
-            }
-
-            return SameComparersLookup[categoryType1];
         }
     }
 }
