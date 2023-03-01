@@ -208,6 +208,16 @@ namespace TDD
                         "Black wins. - with full house: 3 over 10");
         }
 
+        [Test]
+        [Category("full house")]
+        [Category("same category")]
+        public void both_full_house()
+        {
+            // three of kind win
+            ResultSholdBe("Black: 3H 3C TS TC 3D  White: 2C 5C 5H 5S 2H",
+                        "White wins. - with full house: 5");
+        }
+
         private void ResultSholdBe(string input, string expected)
         {
             var showResult = _game.ShowResult(input);
