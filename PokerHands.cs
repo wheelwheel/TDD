@@ -51,6 +51,10 @@ namespace TDD
         {
             return this.GroupBy(x => x.Value).Where(x => x.Count() == 3);
         }
+        public bool IsFullHouse()
+        {
+            return this.IsThreeOfAKind() && this.IsPair();
+        }
 
         public bool IsFiush()
         {

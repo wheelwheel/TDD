@@ -17,7 +17,7 @@ namespace TDD.CategoryMatchers
 
         protected override bool IsMatched(PokerHands pokerHands)
         {
-            return pokerHands.IsThreeOfAKind() && pokerHands.IsPair();
+            return pokerHands.IsFullHouse();
         }
     }
 }
