@@ -15,7 +15,7 @@ namespace TDD.CategoryMatchers
 
         protected override bool IsMatched(PokerHands pokerHands)
         {
-            return pokerHands.GetFourOfAKind().Any();
+            return pokerHands.IsFourOfAKind();
         }
     }
 }

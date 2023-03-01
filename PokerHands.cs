@@ -88,5 +88,10 @@ namespace TDD
         {
             return GetThreeOfAKind().Any();
         }
+
+        public bool IsFourOfAKind()
+        {
+            return GetFourOfAKind().Any();
+        }
     }
 }
