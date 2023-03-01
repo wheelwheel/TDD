@@ -61,7 +61,7 @@ namespace TDD
 
         public bool IsFullHouse()
         {
-            return this.IsThreeOfAKind() && this.IsPair();
+            return IsThreeOfAKind() && IsPair();
         }
 
         public bool IsFiush()
@@ -73,6 +73,11 @@ namespace TDD
         {
             var cardTexts = string.Join("", this.Select(x => x.Text));
             return new string[] { "AKQJT98765432", "A5432" }.Any(x => x.Contains(cardTexts));
+        }
+
+        public bool IsStraightFlush()
+        {
+            return IsStraight() && IsFiush();
         }
 
         public bool IsPair()

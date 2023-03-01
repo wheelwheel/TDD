@@ -15,7 +15,7 @@ namespace TDD.CategoryMatchers
 
         protected override bool IsMatched(PokerHands pokerHands)
         {
-            return pokerHands.IsStraight() && pokerHands.IsFiush();
+            return pokerHands.IsStraightFlush();
         }
     }
 }
