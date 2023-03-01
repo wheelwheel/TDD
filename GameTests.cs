@@ -262,6 +262,16 @@ namespace TDD
                         "Black wins. - with straight flush: 6");
         }
 
+        [Test]
+        [Category("straight flush")]
+        [Category("same category")]
+        public void both_straight_flush()
+        {
+            // A2345
+            ResultSholdBe("Black: AD 2D 3D 5D 4D  White: 9D TD KD QD JD",
+                        "Black wins. - with straight flush: Ace");
+        }
+
         private void ResultSholdBe(string input, string expected)
         {
             var showResult = _game.ShowResult(input);
