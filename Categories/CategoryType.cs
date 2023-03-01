@@ -9,5 +9,6 @@
         Straight = 4,
         Flush = 5,
         FullHouse = 6,
+        FourOfAKind = 7,
     }
 }
