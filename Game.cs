@@ -8,6 +8,7 @@ namespace TDD
         private static readonly Dictionary<CategoryType, IPokerHandsComparer> SameComparersLookup = 
             new Dictionary<CategoryType, IPokerHandsComparer>
             {
+                { CategoryType.FullHouse,new FullHouseComparer()},
                 { CategoryType.Flush,new FlushComparer()},
                 { CategoryType.Straight,new StraightComparer()},
                 { CategoryType.ThreeOfAKind,new ThreeOfAKindComparer()},
@@ -49,6 +50,16 @@ namespace TDD
             }
 
             return SameComparersLookup[categoryType1];
+        }
+    }
+
+    internal class FullHouseComparer : SameCategoryComparer
+    {
+        public override string WinnerCategory => "full house";
+
+        public override int Compare(PokerHands pokerHands1, PokerHands pokerHands2)
+        {
+            return CompareCardsByValue(pokerHands1.GetFirstCardOfEachGroup(), pokerHands2.GetFirstCardOfEachGroup());
         }
     }
 }
