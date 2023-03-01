@@ -235,6 +235,16 @@ namespace TDD
                         "White wins. - with four of a kind: 8");
         }
 
+        [Test]
+        [Category("four of a hind")]
+        [Category("same category")]
+        public void both_four_of_a_kind()
+        {
+            // four of a kind win
+            ResultSholdBe("Black: TH 3C TS TC TD  White: 8D 8S 8H 7H 8C",
+                        "Black wins. - with four of a kind: 10");
+        }
+
         private void ResultSholdBe(string input, string expected)
         {
             var showResult = _game.ShowResult(input);
