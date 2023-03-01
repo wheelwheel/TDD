@@ -83,33 +83,4 @@ namespace TDD
             return GetThreeOfAKind().Any();
         }
     }
-
-    internal class FourOfAKindMatcher : CategoryMatcher
-    {
-        public FourOfAKindMatcher(CategoryMatcher nextCategoryMatcher) : base(nextCategoryMatcher)
-        {
-        }
-
-        protected override Category GetMatchedCategory(PokerHands pokerHands)
-        {
-            return new FourOfAKind() { Output =GetFourOfAKind(pokerHands).First().First().Output};
-        }
-
-        protected override bool IsMatched(PokerHands pokerHands)
-        {
-            return GetFourOfAKind(pokerHands).Any();
-        }
-
-        private static IEnumerable<IGrouping<int, Card>> GetFourOfAKind(PokerHands pokerHands)
-        {
-            return pokerHands.GroupBy(x => x.Value).Where(x => x.Count() == 4);
-        }
-    }
-
-    internal class FourOfAKind : Category
-    {
-        public override CategoryType Type => CategoryType.FourOfAKind;
-
-        public override string Name => "four of a kind";
-    }
 }
