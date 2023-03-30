@@ -7,7 +7,7 @@
 
         public PokerHands GetPokerHands()
         {
-            return new PokerHands(Cards.OrderByDescending(x => x.Value));
+            return new PokerHands(Cards);
         }
     }
 }

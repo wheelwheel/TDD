@@ -11,7 +11,7 @@ namespace TDD
 
         public PokerHands(IEnumerable<Card> cards)
         {
-            _cards = cards;
+            _cards = cards.OrderByDescending(x=>x.Value);
             _categoryMatcher = new StraightFlushMatcher(
                 new FourOfAKindMatcher(
                  new FullHouseMatcher(
